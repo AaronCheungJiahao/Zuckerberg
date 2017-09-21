@@ -2,3 +2,8 @@ yum -y install yum-utils
 yum -y groupinstall development
 yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 yum -y install python35u python35u-devel python35u-pip
+
+
+print(myfunc.mysum.__doc__)
+help(myfunc.mysum)
+  

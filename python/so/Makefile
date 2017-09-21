@@ -1,16 +1,19 @@
-OUT:=test.so
-SRC:=test
-all:$(OUT)
+OUT:=myfunc.so
+# SRC shoule be given without extension name.
+SRC:=myfunc
 
-CFLAGS:=$(shell python3.5m-config --cflag)
-LDFLAGS:= -shared $(shell python3.5m-config --cdflags) -Wl,-rpath=./
+all: $(OUT)
 
-$(SRC): $(SRC).pyx
+CFLAGS:=$(shell python3.5m-config --cflags)
+LDFLAGS:= -shared $(shell python3.5m-config --ldflags) -Wl,-rpath=./ 
+
+$(SRC).c:$(SRC).pyx
+	cythonize -3 $^
 
 %.o:%.c
 	gcc -c $^ $(CFLAGS) -o $@
 
-$(OUT): $(SRC).o
+$(OUT):$(SRC).o
 	gcc -o $@ $(LDFLAGS) $^
 
 clean:
