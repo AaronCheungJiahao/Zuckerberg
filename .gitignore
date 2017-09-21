@@ -1,0 +1,9 @@
+#python 
+*.py[cod]
+
+#c
+*.so
+*.egg
+dist
+build
+
