@@ -1,0 +1,25 @@
+<!DOCTYPE html>  
+    <html>  
+        <head>  
+            <meta charset="UTF-8">  
+            <title></title>  
+
+<script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
+<script type="text/javascript" src='https://cdn.bootcss.com/vue-resource/1.3.4/vue-resource.min.js'></script>
+<div id='app'></div>
+hello world
+<script>
+new Vue({
+    el: '#app',
+    ready: function() {
+        this.$http.get('2.json', function(data) {
+            this.$set('json', data);
+        }).error(function(data, status, request) {
+            console.log('fail' + status + "," + request);
+        })
+    },
+    data: {
+    }
+});
+</script>
+</html>
